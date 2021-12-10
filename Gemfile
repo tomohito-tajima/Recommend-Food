@@ -74,3 +74,8 @@ gem 'rubocop'
 gem 'rubocop-rails'
 gem 'pry-byebug', group: :development
 gem 'rspec-rails'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
