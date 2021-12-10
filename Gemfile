@@ -70,8 +70,8 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'ransack'
 gem "enum_help"
-gem 'rubocop'
-gem 'rubocop-rails'
+gem 'rubocop', require:false
+gem 'rubocop-rails', require:false
 gem 'pry-byebug', group: :development
 gem 'rspec-rails'
 
