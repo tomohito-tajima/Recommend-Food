@@ -1,0 +1,2 @@
+class FoodComment < ApplicationRecord
+end
