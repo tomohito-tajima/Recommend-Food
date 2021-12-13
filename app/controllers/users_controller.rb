@@ -2,14 +2,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @foods = @user.foods
-    # @foods = Food.all
+    # @foods = @user.foods
+    @foods = Food.all
   end
 
   def index
-    # @users = User.all
+    # kaminariを使用
      @users = User.all.page(params[:page]).per(3)
-    # @users = User.all.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def edit

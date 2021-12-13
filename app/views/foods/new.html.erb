@@ -1,0 +1,51 @@
+<main>
+  <div style="text-align: center; margin: 30px auto;">
+    <h4>新規投稿</h4>
+  </div>
+
+  <div style="margin: 30px auto;">
+    <%= form_with model:@food, local: true do |f| %>
+      <table align="center">
+        <tr>
+          <td style = "padding: 20px 30px 0 0;">お店名</td>
+          <td style = "padding: 20px 0 0 0;"><%= f.text_field :name, autofocus: true %></td>
+        </tr>
+
+        <tr>
+          <td style = "padding: 20px 30px 0 0;">料理のジャンル</td>
+          <td style = "padding: 20px 0 0 0;"><%= f.text_field :genre, autofocus: true %></td>
+        </tr>
+
+        <tr>
+          <td style = "padding: 20px 30px 0 0;">お勧めのメニュー</td>
+          <td style = "padding: 20px 0 0 0;"><%= f.text_field :menu, autofocus: true %></td>
+        </tr>
+
+        <tr>
+          <td style = "padding: 20px 30px 0 0;"></td>
+          <td style = "padding: 20px 0 0 0;"><%= f.text_field :price, autofocus: true, placeholder: "税込価格" %></td>
+          <td style = "padding: 20px 30px 0 0;">（円）</td>
+        </tr>
+
+        <tr>
+          <td style = "padding: 20px 30px 0 0; margin: 30px auto;">イメージ画像</td>
+          <td style = "padding: 20px 0 0 0;"><%= f.attachment_field :image, placeholder: "イメージ画像" %></td>
+        </tr>
+
+        <tr>
+          <td style = "padding: 20px 30px 0 0;">紹介</td>
+          <td style = "padding: 20px 0 0 0;"><%= f.text_area :introduction, autofocus: true, placeholder: "紹介文を記載" %></td>
+        </tr>
+
+        <tr>
+          <td style = "padding: 20px 30px 0 0;">住所</td>
+          <td style = "padding: 20px 0 0 0;"><%= f.text_field :address, autofocus: true, placeholder: "お店の住所（任意）" %></td>
+        </tr>
+      </table>
+
+      <div style="text-align: center; margin: 40px auto;">
+        <%= f.submit "新規投稿", class: "btn  btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</main>
