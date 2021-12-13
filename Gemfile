@@ -64,6 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'bootstrap', '~> 4.5'
 gem 'kaminari','~> 1.2.1'
+gem 'bootstrap4-kaminari-views'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'jquery-rails'
@@ -74,6 +75,8 @@ gem 'rubocop', require:false
 gem 'rubocop-rails', require:false
 gem 'pry-byebug', group: :development
 gem 'rspec-rails'
+gem 'carrierwave'
+
 
 gem 'dotenv-rails'
 group :production do

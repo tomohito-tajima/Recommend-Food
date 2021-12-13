@@ -1,0 +1,91 @@
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" style="background-color: orange;">
+        <div class="d-flex justify-content-center">
+          <h4 style="border: solid; border-color: #000080; text-align: center; padding: 5px 20px; margin: 20px 0;">マイページ</h4>
+        </div>
+
+        <table class="table" align="center">
+          <tbody>
+            <tr>
+              <td>名前</td>
+              <td><%= @user.name %></td>
+            </tr>
+
+            <tr>
+              <td>好きな食べ物</td>
+              <td><%= @user.favorited_food %></td>
+            </tr>
+
+            <tr>
+              <td>自己紹介</td>
+              <td><%= @user.introduction %></td>
+            </tr>
+        　</tbody>
+        </table>
+
+        <h4 style="text-align: center; margin: 20px auto;">
+          <%= link_to "マイページを変更", edit_user_path(@user.id), class: "btn btn-block btn-sm btn-success" %>
+        </h4>
+      </div>
+
+      <div class="col-md-7 offset-md-1" style="background-color: red;">
+        <div class="d-flex justify-content-center">
+          <!--カレントユーザがログイン時のみ表示させる-->
+          <% if user_signed_in? && current_user.id.to_s == params[:id] %>
+            <h4 style="text-align: center; margin: 20px auto;">
+              <%= link_to "お気に入りFood一覧", edit_user_path(@user.id), class: "btn btn-block btn-sm btn-warning" %>
+            </h4>
+
+            <h4 style="text-align: center; margin: 20px auto;">
+              <%= link_to "新規投稿する", edit_user_path(@user.id), class: "btn btn-block btn-sm btn-success" %>
+            </h4>
+          <% end %>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <!--カレントユーザなら「あなた」、他ユーザなら「○○さんの投稿一覧」-->
+          <!--他のユーザが見たときのみ、フォローボタンを追加-->
+          <% if user_signed_in? && current_user.id.to_s == params[:id] %>
+            <div>
+              <h4 style="border: solid; border-color: #000000;">あなたが投稿した一覧</h4>
+            </div>
+          <% else %>
+            <div>
+              <h4 style="border: solid; border-color: #000000;"><%= @user.name %>さんが投稿した一覧</h4>
+            </div>
+
+            <div>
+              <%= link_to "フォローする", edit_user_path(@user.id), class: "btn btn-block btn-sm btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+
+        <div>
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th></th>
+                <th>お店名</th>
+                <th>レビュー</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @foods.each do |food| %>
+              　<tr>
+              　   <td><%= attachment_image_tag food.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+              　   <td></td>
+              　   <td>レビュー</td>
+              　   <td<%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %>></td>
+              　</tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

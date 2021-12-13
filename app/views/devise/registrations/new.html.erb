@@ -6,11 +6,12 @@
             <span style="font-size:20px;background-color:#dcdcdc">新規ユーザ登録</span>
         </div>
 
+        <div style="text-align: center; center; margin: 20px 0;">
         <%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
-          <table>
+          <table align="center">
 
             <tr>
               <td><%= f.label :名前（仮でも可） %></td>
@@ -43,6 +44,7 @@
             <%= f.submit "新規登録", class: "btn btn-block btn-sm btn-success" %>
           </div>
         <% end %>
+        </div>
 
         <div style="text-align: center; margin: 60px 0;">
           <!--ログイン画面に推移-->

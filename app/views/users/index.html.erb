@@ -1,0 +1,36 @@
+<main>
+  <div class="container">
+    <div style="text-align: center; center; margin: 20px 0;">
+      <span style="font-size:20px;background-color:#dcdcdc">ユーザ一覧</span>
+    </div>
+
+    <div style="text-align: center; center; margin: 20px 0;">
+    　<% @users.each do |user| %>
+      　<table border="5" align="center">
+      　   <thead>
+            <tr>
+              <th></th>
+              <th>ユーザ名</th>
+              <th>投稿件数</th>
+              <th>フォロー件数</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><%= attachment_image_tag user, :profile_id, :fill, 100, 100, format: 'jpeg' %></td>
+              <td><%= user.name %></td>
+              <td><%#= user.foods.count %></td>
+              <td></td>
+              <td><%= link_to "詳細", user_path(user.id), class: "btn btn-block btn-sm btn-primary" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+      <div style="text-align: center; center; margin: 20px 0;">
+        <%= paginate @users, class: "pagination" %>
+      </div>
+    </div>
+  </div>
+</main>
