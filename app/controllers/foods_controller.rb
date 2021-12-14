@@ -5,7 +5,7 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = Food.new(food_params)
+    @food = current_user.foods.new(food_params)
     if @food.save
       # 新規投稿に成功したら詳細ページへ
       redirect_to food_path(@food.id)

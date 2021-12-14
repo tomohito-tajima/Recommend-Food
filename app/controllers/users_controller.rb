@@ -31,6 +31,8 @@ class UsersController < ApplicationController
     end
   end
 
+  # ストロングパラメータ
+  private
   def user_params
     params.require(:user).permit(:name, :name_kana, :favorited_food, :profile, :introduction)
   end
