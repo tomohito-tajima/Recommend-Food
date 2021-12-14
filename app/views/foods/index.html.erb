@@ -1,0 +1,36 @@
+<main>
+  <div class="container">
+    <div style="text-align: center; center; margin: 20px 0;">
+        <span style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">Food一覧</span>
+    </div>
+
+    <div style="text-align: center; center; margin: 20px 0;">
+    　<% @foods.each do |food| %>
+      　<table border="5" align="center">
+      　   <thead>
+            <tr>
+              <th></th>
+              <th>お店名</th>
+              <th>ジャンル名</th>
+              <th>ユーザ名</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><%= attachment_image_tag food, :profile_id, :fill, 100, 100, format: 'jpeg' %></td>
+              <td><%= food.name %></td>
+              <td><%= food.genre %></td>
+              <td><%= food.user.name %></td>
+              <td><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+      <div style="text-align: center; center; margin: 20px 0;">
+        <%= paginate @foods, class: "pagination" %>
+      </div>
+    </div>
+  </div>
+</main>

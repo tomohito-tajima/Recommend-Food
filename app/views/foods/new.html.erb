@@ -1,10 +1,12 @@
 <main>
-  <div style="text-align: center; margin: 30px auto;">
-    <h4>新規投稿</h4>
+  <div class="container">
+    <div style="text-align: center; center; margin: 20px 0;">
+        <span style=" padding: 10px 50px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">新規FOOD投稿</span>
+    </div>
   </div>
 
   <div style="margin: 30px auto;">
-    <%= form_with model:@food, local: true do |f| %>
+    <%= form_with model:@food, url:'/foods', local: true do |f| %>
       <table align="center">
         <tr>
           <td style = "padding: 20px 30px 0 0;">お店名</td>
@@ -44,7 +46,7 @@
       </table>
 
       <div style="text-align: center; margin: 40px auto;">
-        <%= f.submit "新規投稿", class: "btn  btn-success" %>
+        <%= f.submit "新規投稿", class: "btn  btn-success " %>
       </div>
     <% end %>
   </div>
