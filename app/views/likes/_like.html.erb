@@ -1,0 +1,9 @@
+<% if food.liked_by?(current_user) %>
+   <%= link_to(food_add_path(food), method: :delete, remote: true, id: :"like-button-#{food.id}") do %>
+       <i class="fa-lg fas fa-heart icon-btn liked">♥<%= food.likes.count %> いいね</i>
+   <% end %>
+<% else %>
+   <%= link_to(food_add_path(food), method: :post, remote: true, id: :"like-button-#{food.id}") do %>
+       <i class="fa-lg fas fa-heart icon-btn not-like">♡<%= food.likes.count %> いいね</i>
+   <% end %>
+<% end %>

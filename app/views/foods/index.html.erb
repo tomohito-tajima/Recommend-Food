@@ -5,7 +5,6 @@
     </div>
 
     <div style="text-align: center; center; margin: 20px 0;">
-    　<% @foods.each do |food| %>
       　<table border="5" align="center">
       　   <thead>
             <tr>
@@ -17,17 +16,18 @@
             </tr>
           </thead>
 
-          <tbody>
-            <tr>
-              <td><%= attachment_image_tag food, :image_id, :fill, 100, 100, format: 'jpeg' %></td>
-              <td><%= food.name %></td>
-              <td><%= food.genre %></td>
-              <td><%= food.user.name %></td>
-              <td><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>
-            </tr>
-          </tbody>
+          <% @foods.each do |food| %>
+            <tbody>
+              <tr>
+                <td><%= attachment_image_tag food, :image_id, :fill, 100, 100, format: 'jpeg' %></td>
+                <td><%= food.name %></td>
+                <td><%= food.genre %></td>
+                <td><%= food.user.name %></td>
+                <td><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>
+              </tr>
+            </tbody>
+          <% end %>
         </table>
-      <% end %>
       <div style="text-align: center; center; margin: 20px 0;">
         <%= paginate @foods, class: "pagination" %>
       </div>

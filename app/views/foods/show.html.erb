@@ -10,7 +10,13 @@
       </div>
 
       <div class="col-lg-2 offset-2">
-        <%= link_to "編集", edit_food_path(@food.id), class: "btn btn-block btn-sm btn-success" %>
+        <% if @food.user == current_user %>
+          <%= link_to "編集", edit_food_path(@food.id), class: "btn btn-block btn-sm btn-success" %>
+        <% else %>
+          <div id="like-btn-<%= @food.id %>">
+            <%= render 'likes/like', food: @food %>
+          </div>
+        <% end %>
       </div>
     </div>
 
@@ -18,7 +24,6 @@
       <div class="col-lg-5" style="background-color: orange;">
         <div class="d-flex justify-content-center">
           <%= attachment_image_tag @food, :image, :fill, 100, 100, format: 'jpeg'%>
-          <!--<h4 style="border: solid; border-color: #000080; text-align: center; padding: 5px 20px; margin: 20px 0;">マイページ</h4>-->
         </div>
 
         <div class="d-flex justify-content-center">
