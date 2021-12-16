@@ -17,3 +17,7 @@
 //= require popper
 //= require bootstrap
 //= require_tree .
+
+window.jQuery = window.$ = require('jquery')
+
+require("../jquery_raty")

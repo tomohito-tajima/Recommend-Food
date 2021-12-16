@@ -1,7 +1,34 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <%= render partial: "foods/food", collection: @like_foods %>
+      <h3>お気に入り一覧</h3>
+
+      <table class="table table-hover table-inverse">
+        <thead>
+          <th></th>
+          <th>お店名</th>
+          <th>ジャンル</th>
+          <th>ユーザ名</th>
+          <th></th>
+          <th></th>
+        </thead>
+
+        <tbody>
+          <% @like_foods.each do |like_food| %>
+            <tr>
+              <td></td>
+              <td>like_food.name</td>
+              <td>like_food.genre</td>
+              <td>like_food.user.name</td>
+              <td><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>
+              <td>
+                <div id="like-btn-<%= @food.id %>">
+                  <%= render 'likes/like', food: @food %>
+                </div>
+              </td>
+            </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

@@ -14,7 +14,7 @@ class User < ApplicationRecord
   # 一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
+
   # フォローしたときの処理
   def follow(user_id)
     relationships.create(followed_id: user_id)
@@ -28,5 +28,5 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-  attachment :profile_image
+  attachment :profile
 end

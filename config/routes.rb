@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   end
 
   resources :foods do
-    resource :favorites, only: %i[index create destroy]
     resources :book_comments, only: %i[create destroy]
+    #お気に入り一覧へのルーティング
     get 'likes' => 'likes#index'
     post 'add' => 'likes#create'
     delete '/add' => 'likes#destroy'
