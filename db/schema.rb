@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_16_123039) do
+ActiveRecord::Schema.define(version: 2021_12_17_053356) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "food_id"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_comments_on_food_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "foods", force: :cascade do |t|
     t.string "name"
@@ -24,6 +34,7 @@ ActiveRecord::Schema.define(version: 2021_12_16_123039) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.float "evaluation"
+    t.string "content"
   end
 
   create_table "likes", force: :cascade do |t|

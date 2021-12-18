@@ -29,7 +29,7 @@
         <div class="d-flex justify-content-center">
 
           <div>
-            <%= form_with model: @post, local: true do |f| %>
+            <%= form_with model: @food, local: true do |f| %>
             <div class="field" id="star">
               <%= f.label :evaluation, "評価する：" %>
               <%= f.hidden_field :evaluation, id: :review_star %>
@@ -68,7 +68,12 @@
 
         <div>
           <div>コメントする</div>
-          <div></div>
+          <div>
+            <%= form_with model: [@food, @comment], local: true do |f| %>
+              <%= f.text_area :comment, size: "40x5" %>
+              <%= f.submit '送信', method: :post, class: "btn-sm btn-primary" %>
+            <% end %>
+          </div>
         </div>
       </div>
 
@@ -113,6 +118,25 @@
 
       <div class="d-flex justify-content-center">
         <div>コメント一覧</div>
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>コメント投稿者</th>
+                <th>コメント内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @comments.each do |comment| %>
+                <tr>
+                  <td><%= comment.user.name %></td>
+                  <td><%= comment.comment %></td>
+                  <td><%= link_to "削除", food_comment_path(@food, comment), method: :delete %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

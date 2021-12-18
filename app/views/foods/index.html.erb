@@ -19,7 +19,7 @@
           <% @foods.each do |food| %>
             <tbody>
               <tr>
-                <td><%= attachment_image_tag food, :image_id, :fill, 100, 100, format: 'jpeg' %></td>
+                <td><%= attachment_image_tag food, :image, :fill, 100, 100, format: 'jpeg' %></td>
                 <td><%= food.name %></td>
                 <td><%= food.genre %></td>
                 <td><%= food.user.name %></td>
