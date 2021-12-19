@@ -17,16 +17,17 @@
           <% @like_foods.each do |like_food| %>
             <tr>
               <td></td>
-              <td>like_food.name</td>
-              <td>like_food.genre</td>
-              <td>like_food.user.name</td>
-              <td><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>
+              <td><%= like_food.name %></td>
+              <td><%= like_food.genre %></td>
+              <td><%= like_food.user.name %></td>
+              <td><%= link_to "詳細", food_path(like_food.id), class: "btn btn-block btn-sm btn-primary" %></td>
               <td>
-                <div id="like-btn-<%= @food.id %>">
-                  <%= render 'likes/like', food: @food %>
+                <div id="like-btn-<%= like_food.id %>">
+                  <%= render 'likes/like', food: like_food %>
                 </div>
               </td>
             </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

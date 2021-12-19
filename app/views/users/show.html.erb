@@ -14,6 +14,10 @@
           </h4>
         </div>
 
+        <div>
+          <%= attachment_image_tag @user, :profile, :fill, 200, 100, format: 'jpeg' %>
+        </div>
+
         <table class="table" align="center">
           <tbody>
             <tr>
@@ -32,8 +36,8 @@
             </tr>
 
             <tr>
-              <td>フォロー数: <%= @user.followings.count %></td>
-              <td>フォロワー数: <%= @user.followers.count %></td>
+              <td>フォロー数： <%= @user.followings.count %></td>
+              <td>フォロワー数：<%= @user.followers.count %></td>
             </tr>
 
             <tr>
@@ -92,15 +96,17 @@
                   <th>お店名</th>
                   <th>レビュー</th>
                   <th></th>
+                  <th></th>
                 </tr>
               </thead>
 
             <% @foods.each do |food| %>
               <tbody>
                 <tr>
-              　   <td><%= attachment_image_tag food.user, :profile, :fill, 100, 100, format: 'jpeg' %></td>
+              　   <td><%= attachment_image_tag food, :image, :fill, 50, 50, format: 'jpeg' %></td>
               　   <td><%= food.name %></td>
               　   <td>レビュー</td>
+              　   <td>♥<%= food.likes.count %></td>
               　   <td><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>
               　</tr>
               </tbody>

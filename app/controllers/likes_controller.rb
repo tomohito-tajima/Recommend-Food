@@ -1,12 +1,11 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_like
+  before_action :set_like, except: :index
 
   def index
+    @user = current_user
     likes = Like.where(user_id: @user.id).pluck(:food_id)
     @like_foods = Food.find(likes)
-    #部分テンプレートで使用
-    @food = Food.find(params[:id])
   end
 
   def create

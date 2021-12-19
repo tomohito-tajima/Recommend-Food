@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_12_17_053356) do
     t.string "genre"
     t.string "menu"
     t.integer "price"
-    t.integer "image_id"
+    t.string "image_id"
     t.text "introduction"
     t.string "address"
     t.datetime "created_at", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_12_17_053356) do
     t.string "name_kana", default: "", null: false
     t.string "favorited_food"
     t.text "introduction"
-    t.integer "profile_id"
+    t.string "profile_id"
     t.boolean "is_deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

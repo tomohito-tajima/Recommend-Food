@@ -4,7 +4,7 @@
     <title>Recommended</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,9 +16,25 @@
     <heaer class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <%= link_to "Recommended Food", root_path, class: 'navbar-brand p-3' %>
+          <div>
+            <%= link_to "Recommended Food", root_path, class: 'navbar-brand p-3' %>
+          </div>
+
+          <div>
+            <% if user_signed_in? %>
+              <div class="search_form">
+                <%= form_with url: search_path, local: true, method: :get do |f| %>
+                  <%= f.text_field :word %>
+                  <%= f.select :range, options_for_select([['User'], ['Food']]) %>
+                  <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backword_match"], ["部分一致","partial_match"]]) %>
+                  <%= f.submit "検索", class: "btn btn-primary" %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+
             <span class="navbar-toggler-icon"></span>
           </button>
 
@@ -66,7 +82,6 @@
                 <li>
                   <%= link_to "ログイン", new_user_session_path, class: 'fas fa-home nav-link text-light' %>
                 </li>
-
               <% end %>
             </ul>
           </div>

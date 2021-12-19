@@ -35,7 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :name_kana, null: false, default: ''
       t.string :favorited_food
       t.text :introduction
-      t.integer :profile_id
+      t.string :profile_id
       t.boolean :is_deleted
 
       t.timestamps null: false

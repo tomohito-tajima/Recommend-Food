@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h2><strong>検索結果</strong></h2>
+
+      <table class="table table-hover table-inverse">
+        <!--検索対象モデルがUserの時 -->
+        <% if @range == "User" %>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= attachment_image_tag user, :profile, :fill, 200, 100, format: 'jpeg' %></td>
+                <td><%= user.name %></td>
+                <td>投稿数：<%= user.foods.count %></td>
+                <td>フォロー数：<%= user.followings.count %></td>
+                <td>フォロワー数：<%= user.followers.count %></td>
+                <td><%= link_to "詳細", user_path(user.id), class: "btn btn-block btn-sm btn-primary" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% else %>
+          <!--検索対象モデルがUserではない時(= 検索対象モデルがFoodの時) -->
+          <tbody>
+            <% @foods.each do |food| %>
+              <tr>
+                <td><%= attachment_image_tag food, :image, :fill, 70, 70, format: 'jpeg' %></td>
+                <td><%= food.name %></td>
+                <td><%= food.user.name %></td>
+                <td>レビュー</td>
+                <td>♥<%= food.likes.count %></td>
+                <td><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
