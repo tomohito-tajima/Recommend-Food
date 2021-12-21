@@ -10,66 +10,75 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_17_053356) do
-
-  create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "food_id"
-    t.string "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["food_id"], name: "index_comments_on_food_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+ActiveRecord::Schema.define(version: 20_211_219_042_748) do
+  create_table 'comments', force: :cascade do |t|
+    t.integer 'user_id'
+    t.integer 'food_id'
+    t.string 'comment'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['food_id'], name: 'index_comments_on_food_id'
+    t.index ['user_id'], name: 'index_comments_on_user_id'
   end
 
-  create_table "foods", force: :cascade do |t|
-    t.string "name"
-    t.string "genre"
-    t.string "menu"
-    t.integer "price"
-    t.string "image_id"
-    t.text "introduction"
-    t.string "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.float "evaluation"
-    t.string "content"
+  create_table 'foods', force: :cascade do |t|
+    t.string 'name'
+    t.string 'genre'
+    t.string 'menu'
+    t.integer 'price'
+    t.string 'image_id'
+    t.text 'introduction'
+    t.string 'address'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'user_id'
+    t.float 'evaluation'
+    t.string 'content'
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "food_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["food_id"], name: "index_likes_on_food_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
+  create_table 'likes', force: :cascade do |t|
+    t.integer 'user_id'
+    t.integer 'food_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['food_id'], name: 'index_likes_on_food_id'
+    t.index ['user_id'], name: 'index_likes_on_user_id'
   end
 
-  create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followed_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'relationships', force: :cascade do |t|
+    t.integer 'follower_id'
+    t.integer 'followed_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "name", default: "", null: false
-    t.string "name_kana", default: "", null: false
-    t.string "favorited_food"
-    t.text "introduction"
-    t.string "profile_id"
-    t.boolean "is_deleted"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "profile_image_id"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'reviews', force: :cascade do |t|
+    t.integer 'user_id'
+    t.integer 'food_id'
+    t.string 'content'
+    t.integer 'score'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['food_id'], name: 'index_reviews_on_food_id'
+    t.index ['user_id'], name: 'index_reviews_on_user_id'
   end
 
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.string 'name', default: '', null: false
+    t.string 'name_kana', default: '', null: false
+    t.string 'favorited_food'
+    t.text 'introduction'
+    t.string 'profile_id'
+    t.boolean 'is_deleted'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.text 'profile_image_id'
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+  end
 end

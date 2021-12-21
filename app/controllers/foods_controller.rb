@@ -22,9 +22,11 @@ class FoodsController < ApplicationController
 
   def show
     @food = Food.find(params[:id])
-    #コメント機能実装のための定義
+    @review = Review.new # レビュー新規作成に使用
+    @reviews = @food.reviews
+    # コメント機能実装のための定義
     @comment = Comment.new
-    @comments = @food.comments  #投稿に対する全てのコメントを取得
+    @comments = @food.comments # 投稿に対する全てのコメントを取得
   end
 
   def edit

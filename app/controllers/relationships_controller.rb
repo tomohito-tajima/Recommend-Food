@@ -1,14 +1,13 @@
 class RelationshipsController < ApplicationController
-
   # フォローするとき
   def create
-    current_user.follow(params[:user_id])  #followはUserモデルでフォローしたときの処理として定義
+    current_user.follow(params[:user_id]) # followはUserモデルでフォローしたときの処理として定義
     redirect_to request.referer
   end
 
-   # フォロー外すとき
+  # フォロー外すとき
   def destroy
-    current_user.unfollow(params[:user_id])  #unfollowはUserモデルでフォローを外したときの処理として定義
+    current_user.unfollow(params[:user_id]) # unfollowはUserモデルでフォローを外したときの処理として定義
     redirect_to request.referer
   end
 
@@ -23,5 +22,4 @@ class RelationshipsController < ApplicationController
     user = User.find(params[:user_id])
     @users = user.followers
   end
-
 end

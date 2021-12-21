@@ -69,6 +69,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'bootstrap', '~> 4.5'
 gem 'bootstrap4-kaminari-views'
+gem 'bulma-rails'
 gem 'carrierwave'
 gem 'devise'
 gem 'enum_help'

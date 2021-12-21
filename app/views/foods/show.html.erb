@@ -23,51 +23,38 @@
     <div class="row">
       <div class="col-lg-5">
         <div class="d-flex justify-content-center">
-          <%= attachment_image_tag @food, :image, :fill, 200, 100, format: 'jpeg' %>
+          <%= attachment_image_tag @food, :image, :fill, 350, 200, format: 'jpeg' %>
         </div>
 
         <div class="d-flex justify-content-center">
-
-          <div>
-            <%= form_with model: @food, local: true do |f| %>
-            <div class="field" id="star">
-              <%= f.label :evaluation, "評価する：" %>
-              <%= f.hidden_field :evaluation, id: :review_star %>
-              <script>
-                $('#star').raty({
-                  size     : 36,
-                  starOff:  '<%= asset_path('star-off.png') %>',
-                  starOn : '<%= asset_path('star-on.png') %>',
-                  starHalf: '<%= asset_path('star-half.png') %>',
-                  scoreName: 'post[evaluation]',    // evaluationカラムへの保存
-                  half: true,   //  星半分の入力
-                });
-              </script>
-              <%= f.submit "評価", class: "btn btn-sm btn-primary" %>
-            </div>
-            <% end %>
-          </div>
-
           <div class="relative-post-evaluation">
-            <span>他ユーザの評価：</span>
+            <div>他ユーザの評価：</div>
             <span id="star-rate-<%= @food.id %>"></span>
+            <div id="food_avarage_rate"></div>
             <script>
-              $('#star-rate-<%= @food.id %>').raty({
+              $('#food_avarage_rate').raty({
                 size: 36,
-                starOff: "<%= asset_path('star-off.png') %>",
-                starOn: "<%= asset_path('star-on.png') %>",
-                starHalf: "<%= asset_path('star-half.png') %>",
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
                 half: true,  // # 星半分表示
-                readOnly: true,  // # 読み取り専用
-                score: <%= @food.evaluation %>,   // # 星評価の表示
+                 // # 読み取り専用
+                 readOnly: true,
+                score: '<%= @food.avg_score %>'  // # 星評価の表示
               });
             </script>
             <%= @food.evaluation %>
           </div>
+          <div class="average-score-display ml-3 pt-2">
+            <%= @food.avg_score %>点（<%= @food.reviews.count %>件のレビュー）
+          </div>
         </div>
 
         <div>
-          <div>コメントする</div>
+          <div>
+            <%= render 'reviews/form', review: @review, food: @food %>
+          </div>
+
           <div>
             <%= form_with model: [@food, @comment], local: true do |f| %>
               <%= f.text_area :comment, size: "40x5" %>
@@ -117,26 +104,79 @@
       </div>
 
       <div class="d-flex justify-content-center">
-        <div>コメント一覧</div>
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <th>コメント投稿者</th>
-                <th>コメント内容</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @comments.each do |comment| %>
-                <tr>
-                  <td><%= comment.user.name %></td>
-                  <td><%= comment.comment %></td>
-                  <td><%= link_to "削除", food_comment_path(@food, comment), method: :delete %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+        <div>他ユーザのレビュー</div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <section class="section mt-6">
+          <div class="container">
+            <div class="columns is-centered">
+              <div class="column is-5">
+                <div class="card mb-6">
+                  <header class="card-header">
+                    <p class="card-header-title">
+                      <%= @food.name %>
+                    </p>
+                  </header>
+
+                  <div class="card-content">
+                    <div class="content average-score">
+                      <div class="star-rating mb-2">
+                        <div class="star-rating-front" style="width: <%= @food.review_score_percentage %>%">★★★★★</div>
+                        <div class="star-rating-back">★★★★★</div>
+                      </div>
+
+                      <div class="average-score-display ml-3 pt-2">
+                        <%= @food.avg_score %>点（<%= @food.reviews.count %>件のレビュー）
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <table class="table is-fullwidth has-text-centered">
+                  <thead>
+                    <tr>
+                      <th>ユーザー</th>
+                      <th>点数</th>
+                      <th>内容</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @reviews.each do |review| %>
+                      <tr>
+                        <td><%= review.user.name %></td>
+                        <td><%= review.score %></td>
+                        <td><%= review.content %></td>
+                      </tr>
+                     </div>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!--<div>-->
+          <!--<table>-->
+          <!--  <thead>-->
+          <!--    <tr>-->
+          <!--      <th>コメント投稿者</th>-->
+          <!--      <th>コメント内容</th>-->
+          <!--    </tr>-->
+          <!--  </thead>-->
+          <!--  <tbody>-->
+          <!--    <%# @comments.each do |comment| %>-->
+          <!--      <tr>-->
+          <!--        <td><%#= comment.user.name %></td>-->
+          <!--        <td><%#= comment.comment %></td>-->
+          <!--        <td><%#= link_to "削除", food_comment_path(@food, comment), method: :delete %></td>-->
+          <!--      </tr>-->
+          <!--    <%# end %>-->
+          <!--  </tbody>-->
+          <!--</table>-->
+        <!--</div>-->
       </div>
     </div>
   </div>

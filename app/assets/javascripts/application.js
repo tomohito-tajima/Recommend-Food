@@ -18,6 +18,6 @@
 //= require bootstrap
 //= require_tree .
 
-window.jQuery = window.$ = require('jquery')
+// window.jQuery = window.$ = require('jquery')
 
-require("../jquery_raty")
+// require("../jquery_raty")

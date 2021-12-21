@@ -44,7 +44,7 @@
               <td><%= link_to "フォロー一覧", user_followings_path(@user.id) %></td>
               <td><%= link_to "フォロワー一覧", user_followers_path(@user.id) %></td>
             </tr>
-        　</tbody>
+          </tbody>
         </table>
 
         <h4 style="text-align: center; margin: 20px auto; text-center" >
@@ -103,12 +103,12 @@
             <% @foods.each do |food| %>
               <tbody>
                 <tr>
-              　   <td><%= attachment_image_tag food, :image, :fill, 50, 50, format: 'jpeg' %></td>
-              　   <td><%= food.name %></td>
-              　   <td>レビュー</td>
-              　   <td>♥<%= food.likes.count %></td>
-              　   <td><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>
-              　</tr>
+                  <td><%= attachment_image_tag food, :image, :fill, 50, 50, format: 'jpeg' %></td>
+                  <td><%= food.name %></td>
+                  <td>レビュー</td>
+                  <td>♥o<%= fod.likes.count %></td>
+                  <td><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>
+                </tr>
               </tbody>
             <% end %>
           </table>
@@ -117,3 +117,4 @@
     </div>
   </div>
 </main>
+
