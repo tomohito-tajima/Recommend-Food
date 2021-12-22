@@ -1,22 +1,24 @@
 <main>
   <div class="container">
-    <div class="row">
-      <div class="col-lg-2">
-        <h4><%= link_to @food.user.name, user_path %>さんの投稿</h4>
+    <div class="row" style ="text-align: center; margin: 30px auto;">
+      <div class="col-lg-3">
+        <h4 style="text-align: center;"><%= link_to @food.user.name, user_path %>さんの投稿</h4>
       </div>
 
-      <div class="col-lg-4 offset-lg-2">
-        <h3 style="text-align: center;"><strong><%= @food.name %></strong></h3>
+      <div class="col-lg-4 offset-lg-1">
+        <h3 style="text-align: center; margin: 15px auto;"><strong><%= @food.name %></strong></h3>
       </div>
 
       <div class="col-lg-2 offset-2">
-        <% if @food.user == current_user %>
-          <%= link_to "編集", edit_food_path(@food.id), class: "btn btn-block btn-sm btn-success" %>
-        <% else %>
-          <div id="like-btn-<%= @food.id %>">
-            <%= render 'likes/like', food: @food %>
-          </div>
-        <% end %>
+        <h5 style="text-align: center;">
+          <% if @food.user == current_user %>
+            <%= link_to "編集", edit_food_path(@food.id), class: "btn btn-block btn-sm btn-success" %>
+          <% else %>
+            <div id="like-btn-<%= @food.id %>">
+              <%= render 'likes/like', food: @food %>
+            </div>
+          <% end %>
+        </h5>
       </div>
     </div>
 
@@ -69,28 +71,28 @@
           <table class="table" align="center">
             <tbody>
               <tr>
-                <td style = "padding: 20px 30px 0 0;">ジャンル名</td>
-                <td style = "padding: 20px 0 0 0;"><%= @food.genre %></td>
+                <td style = "padding: 40px 30px 0 0;">ジャンル名</td>
+                <td style = "padding: 40px 0 0 0;"><%= @food.genre %></td>
               </tr>
 
               <tr>
-                <td style = "padding: 20px 30px 0 0;">お勧めメニュー</td>
-                <td style = "padding: 20px 0 0 0;"><%= @food.menu %></td>
+                <td style = "padding: 40px 30px 0 0;">お勧めメニュー</td>
+                <td style = "padding: 40px 0 0 0;"><%= @food.menu %></td>
               </tr>
 
               <tr>
-                <td style = "padding: 20px 30px 0 0;">税抜価格</td>
-                <td style = "padding: 20px 0 0 0;"><%= @food.price %>（円）</td>
+                <td style = "padding: 40px 30px 0 0;">税抜価格</td>
+                <td style = "padding: 40px 0 0 0;"><%= @food.price %>（円）</td>
               </tr>
 
               <tr>
-                <td style = "padding: 20px 30px 0 0;">紹介</td>
-                <td style = "padding: 20px 0 0 0;"><%= @food.introduction %></td>
+                <td style = "padding: 40px 30px 0 0;">紹介</td>
+                <td style = "padding: 40px 0 0 0;"><%= @food.introduction %></td>
               </tr>
 
               <tr>
-                <td style = "padding: 20px 30px 0 0;">住所</td>
-                <td style = "padding: 20px 0 0 0;"><%= @food.address %></td>
+                <td style = "padding: 40px 30px 0 0;">住所</td>
+                <td style = "padding: 40px 0 0 0;"><%= @food.address %></td>
               </tr>
             </tbody>
           </table>
@@ -98,19 +100,15 @@
       </div>
     </div>
 
-    <div>
-      <div>
-        <p><strong>他ユーザのコメント</strong></p>
-      </div>
-
+    <div style="margin: 30px 0">
       <div class="d-flex justify-content-center">
-        <div>他ユーザのレビュー</div>
+        <div class="line"><strong>他ユーザのレビュー</strong></div>
       </div>
 
       <div class="d-flex justify-content-center">
         <section class="section mt-6">
           <div class="container">
-            <div class="columns is-centered">
+            <div class="columns is-centered" style ="margin: 30px 25%;">
               <div class="column is-5">
                 <div class="card mb-6">
                   <header class="card-header">
@@ -133,7 +131,7 @@
                   </div>
                 </div>
 
-                <table class="table is-fullwidth has-text-centered">
+                <table class="table is-fullwidth has-text-centered" style="margin: 20px 0">
                   <thead>
                     <tr>
                       <th>ユーザー</th>

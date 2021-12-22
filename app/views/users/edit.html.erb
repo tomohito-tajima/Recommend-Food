@@ -1,45 +1,47 @@
 <main>
-  <div style="text-align: center; margin: 30px auto;">
-    <h4>ユーザ情報変更画面</h4>
-  </div>
+  <div class ="container">
+    <div style="text-align: center; margin: 30px 30%;">
+      <h4 style="font-size:20px;background-color:#dcdcdc; padding: 10px;"><strong>ユーザ情報変更画面</strong></h4>
+    </div>
 
-  <div style="margin: 30px auto;">
-    <%= form_with model:@user, local: true do |f| %>
-      <table align="center">
-        <tr>
-          <td style = "padding: 20px 30px 0 0;">名前（仮でも可）</td>
-          <td style = "padding: 20px 0 0 0;"><%= f.text_field :name, autofocus: true %></td>
-        </tr>
+    <div style="margin: 30px auto;">
+      <%= form_with model:@user, local: true do |f| %>
+        <table align="center">
+          <tr>
+            <td style = "padding: 30px 30px 0 0;">名前（仮でも可）</td>
+            <td style = "padding: 30px 0 0 0;"><%= f.text_field :name, autofocus: true %></td>
+          </tr>
 
-        <tr>
-          <td style = "padding: 20px 30px 0 0;">フリガナ</td>
-          <td style = "padding: 20px 0 0 0;"><%= f.text_field :name_kana, autofocus: true %></td>
-        </tr>
+          <tr>
+            <td style = "padding: 30px 30px 0 0;">フリガナ</td>
+            <td style = "padding: 30px 0 0 0;"><%= f.text_field :name_kana, autofocus: true %></td>
+          </tr>
 
-        <tr>
-          <td style = "padding: 20px 30px 0 0;">メールアドレス</td>
-          <td style = "padding: 20px 0 0 0;"><%= f.email_field :email, autofocus: true %></td>
-        </tr>
+          <tr>
+            <td style = "padding: 30px 30px 0 0;">メールアドレス</td>
+            <td style = "padding: 30px 0 0 0;"><%= f.email_field :email, autofocus: true %></td>
+          </tr>
 
-        <tr>
-          <td style = "padding: 20px 30px 0 0; margin: 30px auto;">プロフィール画像</td>
-          <td style = "padding: 20px 0 0 0;"><%= f.attachment_field :profile, placeholder: "プロフィール画像" %></td>
-        </tr>
+          <tr>
+            <td style = "padding: 30px 30px 0 0; margin: 30px auto;">プロフィール画像</td>
+            <td style = "padding: 30px 0 0 0;"><%= f.attachment_field :profile, placeholder: "プロフィール画像" %></td>
+          </tr>
 
-        <tr>
-          <td style = "padding: 20px 30px 0 0;">好きな食べ物</td>
-          <td style = "padding: 20px 0 0 0;"><%= f.text_field :favorited_food, autofocus: true %></td>
-        </tr>
+          <tr>
+            <td style = "padding: 30px 30px 0 0;">好きな食べ物</td>
+            <td style = "padding: 30px 0 0 0;"><%= f.text_field :favorited_food, autofocus: true %></td>
+          </tr>
 
-        <tr>
-          <td style = "padding: 20px 30px 0 0;">自己紹介</td>
-          <td style = "padding: 20px 0 0 0;"><%= f.text_area :introduction, autofocus: true, placeholder: "ここに説明文を記述します" %></td>
-        </tr>
-      </table>
+          <tr>
+            <td style = "padding: 30px 30px 0 0;">自己紹介</td>
+            <td style = "padding: 30px 0 0 0;"><%= f.text_area :introduction, autofocus: true, placeholder: "ここに説明文を記述します" %></td>
+          </tr>
+        </table>
 
-      <div style="text-align: center; margin: 40px auto;">
-        <%= f.submit "編集内容を保存", class: "btn btn-sm btn-success" %>
-      </div>
-    <% end %>
+        <div style="text-align: center; margin: 40px auto;">
+          <%= f.submit "編集内容を保存", class: "btn btn-sm btn-success" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </main>

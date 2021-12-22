@@ -19,6 +19,9 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   # コメントモデルとのアソシエーション
   has_many :comments, dependent: :destroy
+  # 通知モデルとの紐付け
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   # フォローしたときの処理
   def follow(user_id)
