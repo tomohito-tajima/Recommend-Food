@@ -1,11 +1,11 @@
 <main>
   <div class="container">
     <div style="text-align: center; center; margin: 20px 0;">
-        <span style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">Food一覧</span>
+        <span style=" padding: 10px 50px; margin-bottom: 10px; background-color: orange; color: white; border-radius: 10px;">Food一覧</span>
     </div>
 
-    <div style="text-align: center; center; margin: 20px 0;">
-      　<table border="5" align="center">
+    <div style="text-align: center; center; margin: 20px 20%;">
+      　<table class="table table-hover table-bordered">
       　   <thead>
             <tr>
               <th></th>
@@ -19,8 +19,8 @@
           <% @foods.each do |food| %>
             <tbody>
               <tr>
-                <td><%= attachment_image_tag food, :image, :fill, 100, 100, format: 'jpeg' %></td>
-                <td><%= food.name %></td>
+                <td style = "text-align: center;"><%= attachment_image_tag food, :image, :fill, 100, 100, format: 'jpeg' %></td>
+                <td style="margin: 30% 20%;"><%= food.name %></td>
                 <td><%= food.genre %></td>
                 <td><%= food.user.name %></td>
                 <td><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>

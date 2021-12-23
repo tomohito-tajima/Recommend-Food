@@ -64,6 +64,13 @@
                 </li>
 
                 <li>
+                  <% if unchecked_notifications.any? %>
+                    <i class="fa fa-circle" style="color: gold;"></i>
+                  <% end %>
+                  <%= link_to "通知", notifications_path, class: "btn-default" %>
+                </li>
+
+                <li>
                   <%= link_to "新規投稿", new_food_path, class: 'fas fa-home nav-link text-light' %>
                 </li>
 

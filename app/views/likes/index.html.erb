@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <h3>お気に入り一覧</h3>
+      <div style="text-align: center; center; margin: 30px 0 40px 0; padding: 0 30%;">
+      <h3 style=" padding: 10px 50px; margin-bottom: 10px; background-color: orange; color: white; border-radius: 10px;"><strong>お気に入り一覧</strong></h3>
+      </div>
 
       <table class="table table-hover table-inverse">
         <thead>
@@ -9,7 +11,7 @@
           <th>お店名</th>
           <th>ジャンル</th>
           <th>ユーザ名</th>
-          <th></th>
+          <th>いいね数</th>
           <th></th>
         </thead>
 
@@ -20,12 +22,12 @@
               <td><%= like_food.name %></td>
               <td><%= like_food.genre %></td>
               <td><%= like_food.user.name %></td>
-              <td><%= link_to "詳細", food_path(like_food.id), class: "btn btn-block btn-sm btn-primary" %></td>
               <td>
                 <div id="like-btn-<%= like_food.id %>">
                   <%= render 'likes/like', food: like_food %>
                 </div>
               </td>
+              <td><%= link_to "詳細", food_path(like_food.id), class: "btn btn-block btn-sm btn-primary" %></td>
             </tr>
           <% end %>
         </tbody>

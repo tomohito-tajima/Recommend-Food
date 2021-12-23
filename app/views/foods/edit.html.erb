@@ -45,8 +45,13 @@
       </table>
 
       <div style="text-align: center; margin: 40px auto;">
-        <%= f.submit "新規投稿", class: "btn  btn-success" %>
+        <%= f.submit "FOOD編集", class: "btn  btn-success" %>
       </div>
+
     <% end %>
+
+    <div style="text-align: center; margin: 40px auto;">
+      <%= link_to "削除する", food_path(@food.id), method: :delete, class: "btn  btn-danger" %>
+    </div>
   </div>
 </main>

@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <div>
-        <h3>フォロー一覧</h3>
+        <% if user_signed_in? && current_user.id.to_s == params[:id] %>
+          <h3>フォロー一覧</h3>
+        <% else %>
+          <h3><%= @user.name %>さんのフォロー一覧</h3>
+        <% end %>
       </div>
 
       <div>

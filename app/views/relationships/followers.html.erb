@@ -1,8 +1,17 @@
 <div class="container">
   <div class="row">
-    <h3>フォロー一覧</h3>
     <div class="col-md-8 offset-md-2">
-      <%= render partial: "relationships/follow_list", users: @users %>
+      <div>
+        <% if user_signed_in? && current_user.id.to_s == params[:id] %>
+          <h3>フォロワー一覧</h3>
+        <% else %>
+          <h3><%= @user.name %>さんのフォロワー一覧</h3>
+        <% end %>
+      </div>
+
+      <div>
+        <%= render partial: "relationships/follow_list", users: @users %>
+      </div>
     </div>
   </div>
 </div>

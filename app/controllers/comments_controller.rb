@@ -3,7 +3,10 @@ class CommentsController < ApplicationController
     @food = Food.find(params[:food_id])
     @comment = @food.comments.new(comment_params)
     @comment.user_id = current_user.id
+    @comment_food = @comment.food
     if @comment.save
+      #通知の作成
+      @comment_food.create_notification_comment!(current_user, @comment.id)
       redirect_to request.referer
     else
       @food_new = Food.new

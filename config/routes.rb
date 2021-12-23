@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   end
 
   get '/search', to: 'searchs#search'
+  #通知機能のルーティング
+  resources :notifications, only: :index
 end

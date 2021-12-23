@@ -2,7 +2,11 @@
   <div class="container">
     <div class="row" style ="text-align: center; margin: 30px auto;">
       <div class="col-lg-3">
-        <h4 style="text-align: center;"><%= link_to @food.user.name, user_path %>さんの投稿</h4>
+        <% if user_signed_in? && current_user.id == @food.user_id %>
+          <h4 style="text-align: center;"><%= link_to "あなた", user_path(@food.user.id) %>の投稿</h4>
+        <% else %>
+          <h4 style="text-align: center;"><%= link_to @food.user.name, user_path(@food.user.id) %>さんの投稿</h4>
+        <% end %>
       </div>
 
       <div class="col-lg-4 offset-lg-1">
@@ -71,28 +75,28 @@
           <table class="table" align="center">
             <tbody>
               <tr>
-                <td style = "padding: 40px 30px 0 0;">ジャンル名</td>
-                <td style = "padding: 40px 0 0 0;"><%= @food.genre %></td>
+                <td style = "padding: 40px 30px 0 0;"><strong>ジャンル名</strong></td>
+                <td style = "padding: 40px 0 0 0;"><strong><%= @food.genre %></strong></td>
               </tr>
 
               <tr>
-                <td style = "padding: 40px 30px 0 0;">お勧めメニュー</td>
-                <td style = "padding: 40px 0 0 0;"><%= @food.menu %></td>
+                <td style = "padding: 40px 30px 0 0;"><strong>お勧めメニュー</strong></td>
+                <td style = "padding: 40px 0 0 0;"><strong><%= @food.menu %></strong></td>
               </tr>
 
               <tr>
-                <td style = "padding: 40px 30px 0 0;">税抜価格</td>
-                <td style = "padding: 40px 0 0 0;"><%= @food.price %>（円）</td>
+                <td style = "padding: 40px 30px 0 0;"><strong>税抜価格</strong></td>
+                <td style = "padding: 40px 0 0 0;"><strong><%= @food.price %></strong>（円）</td>
               </tr>
 
               <tr>
-                <td style = "padding: 40px 30px 0 0;">紹介</td>
-                <td style = "padding: 40px 0 0 0;"><%= @food.introduction %></td>
+                <td style = "padding: 40px 30px 0 0;"><strong>紹介</strong></td>
+                <td style = "padding: 40px 0 0 0;"><strong><%= @food.introduction %></strong></td>
               </tr>
 
               <tr>
-                <td style = "padding: 40px 30px 0 0;">住所</td>
-                <td style = "padding: 40px 0 0 0;"><%= @food.address %></td>
+                <td style = "padding: 40px 30px 0 0;"><strong>住所</strong></td>
+                <td style = "padding: 40px 0 0 0;"><strong><%= @food.address %></strong></td>
               </tr>
             </tbody>
           </table>

@@ -17,7 +17,11 @@ class FoodsController < ApplicationController
 
   def index
     # kaminariを使用
-    @foods = Food.all.page(params[:page]).per(3)
+    @foods = Food.all.page(params[:page]).per(5)
+    #いいね数を表示させるために以下3行追加
+    @user = current_user
+    likes = Like.where(user_id: @user.id).pluck(:food_id)
+    @like_foods = Food.find(likes)
   end
 
   def show
@@ -53,13 +57,15 @@ class FoodsController < ApplicationController
 
   def destroy
     @food = Food.find(params[:id])
+    @food.destroy
+    redirect_to user_path(current_user)
     # カレントユーザでないと投稿を削除できない。
-    if @food.user != current_user
-      redirect_to foods_path
-    else
-      @food.destroy
-      redirect_to foods_path
-    end
+    # if @food.user != current_user
+    #   redirect_to foods_path
+    # else
+    #   @food.destroy
+    #   redirect_to user_path(current_user)
+    # end
   end
 
   private
