@@ -9,12 +9,12 @@
           <tbody>
             <% @users.each do |user| %>
               <tr>
-                <td><%= attachment_image_tag user, :profile, :fill, 200, 100, format: 'jpeg' %></td>
-                <td><%= user.name %></td>
-                <td>投稿数：<%= user.foods.count %></td>
-                <td>フォロー数：<%= user.followings.count %></td>
-                <td>フォロワー数：<%= user.followers.count %></td>
-                <td><%= link_to "詳細", user_path(user.id), class: "btn btn-block btn-sm btn-primary" %></td>
+                <td><%= attachment_image_tag user, :profile, :fill, 70, 70, format: 'jpeg' %></td>
+                <td style="padding: 30px 0;"><%= user.name %></td>
+                <td style="padding: 30px 0;">投稿数：<%= user.foods.count %></td>
+                <td style="padding: 30px 0;">フォロー数：<%= user.followings.count %></td>
+                <td style="padding: 30px 0;">フォロワー数：<%= user.followers.count %></td>
+                <td style="padding: 30px 0;"><%= link_to "詳細", user_path(user.id), class: "btn btn-block btn-sm btn-primary" %></td>
               </tr>
             <% end %>
           </tbody>

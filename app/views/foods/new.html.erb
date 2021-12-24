@@ -3,6 +3,14 @@
     <div style="text-align: center; center; margin: 20px 0;">
         <span style=" padding: 10px 50px; margin-bottom: 10px; background-color: orange; color: white; border-radius: 10px;">新規FOOD投稿</span>
     </div>
+    <div style= "text-align: center;">
+      <% if @food.errors.any? %>
+        <%= @food.errors.count %>件のエラーが発生しました
+        <% @food.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
   <div style="margin: 30px auto;">

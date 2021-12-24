@@ -9,6 +9,9 @@ class Food < ApplicationRecord
   # 通知モデルとのアソシエーション
   has_many :notifications, dependent: :destroy
 
+  validates :name, presence: true #nameのデータがないと投稿できない
+  validates :image, presence: true #imageのデータがないと投稿できない
+
   # レビューの平均値の定義
   def avg_score
     if reviews.empty?
@@ -44,7 +47,7 @@ class Food < ApplicationRecord
               Food.all
             end
   end
-  
+
   #通知メソッドの作成（ここから）
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(

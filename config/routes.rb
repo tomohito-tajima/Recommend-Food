@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   get '/search', to: 'searchs#search'
   #通知機能のルーティング
   resources :notifications, only: :index
+  delete '/destroy_all/users_notifications' => 'notifications#destroy_all'
 end

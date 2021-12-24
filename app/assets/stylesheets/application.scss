@@ -49,3 +49,20 @@ body{
   justify-content: center;
 }
 
+// 元々のテキストサイズを参考に、カードの幅を決める
+div.text-card-container {
+  padding-top: 9px;
+  padding-left: 9px;
+  padding-right: 9px;
+  margin-bottom: 50px;
+}
+
+div.content-card {
+  height: 200px;
+  max-width: 150px;
+  margin: 0 auto;
+}
+
+div.card-header {
+  height: 150px;
+}

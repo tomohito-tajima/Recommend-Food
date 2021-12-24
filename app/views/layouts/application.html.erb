@@ -43,54 +43,23 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
-                <li>
-                  <%= link_to "マイページ", user_path(current_user), class: 'fas fa-home nav-link text-light' %>
-                </li>
-
-                <li>
-                  <%= link_to "about", home_about_path, class: 'fas fa-home nav-link text-light' %>
-                </li>
-
-                <li>
-                  <%= link_to "お気に入り一覧", likes_foods_path, class: 'fas fa-home nav-link text-light' %>
-                </li>
-
-                <li>
-                  <%= link_to "Food一覧", foods_path, class: 'fas fa-home nav-link text-light' %>
-                </li>
-
-                <li>
-                  <%= link_to "ユーザ一覧", users_path, class: 'fas fa-home nav-link text-light' %>
-                </li>
-
+                <li><%= link_to "マイページ", user_path(current_user), class: 'fas fa-home nav-link text-light' %></li>
+                <li><%= link_to "about", home_about_path, class: 'fas fa-landmark nav-link text-light' %></li>
+                <li><%= link_to "お気に入り一覧", likes_foods_path, class: 'fas fa-burn nav-link text-light' %></li>
+                <li><%= link_to "Food一覧", foods_path, class: 'fas fa-hamburger nav-link text-light' %></li>
+                <li><%= link_to "ユーザ一覧", users_path, class: 'fas fa-child nav-link text-light' %></li>
                 <li>
                   <% if unchecked_notifications.any? %>
                     <i class="fa fa-circle" style="color: gold;"></i>
                   <% end %>
-                  <%= link_to "通知", notifications_path, class: "btn-default" %>
+                  <%= link_to "通知", notifications_path, class: "fas fa-bell nav-link text-light" %>
                 </li>
-
-                <li>
-                  <%= link_to "新規投稿", new_food_path, class: 'fas fa-home nav-link text-light' %>
-                </li>
-
-                <li>
-                  <%= link_to "ログアウト", destroy_user_session_path, class: 'fas fa-home nav-link text-light', method: :delete %>
-                </li>
-
+                <li><%= link_to "新規投稿", new_food_path, class: 'fas fa-leaf nav-link text-light' %></li>
+                <li><%= link_to "ログアウト", destroy_user_session_path, class: 'fas fa-running nav-link text-light', method: :delete %></li>
               <% else %>
-
-                <li>
-                  <%= link_to "about", home_about_path, class: 'fas fa-home nav-link text-light' %>
-                </li>
-
-                <li>
-                  <%= link_to "新規登録", new_user_registration_path, class: 'fas fa-home nav-link text-light' %>
-                </li>
-
-                <li>
-                  <%= link_to "ログイン", new_user_session_path, class: 'fas fa-home nav-link text-light' %>
-                </li>
+                <li><%= link_to "about", home_about_path, class: 'fas fa-landmark nav-link text-light' %></li>
+                <li><%= link_to "新規登録", new_user_registration_path, class: 'fas fa-home nav-link text-light' %></li>
+                <li><%= link_to "ログイン", new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
               <% end %>
             </ul>
           </div>
