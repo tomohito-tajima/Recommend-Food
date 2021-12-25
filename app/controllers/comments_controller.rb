@@ -9,9 +9,14 @@ class CommentsController < ApplicationController
       @comment_food.create_notification_comment!(current_user, @comment.id)
       redirect_to request.referer
     else
-      @food_new = Food.new
-      @comments = @food.comments
-      redirect_to new_food_path
+      @error_comment = @comment #＠error_commentにエラー内容を含んだcommentを再定義
+      #renderでfood/showを表示させるため必要の定義を記入
+      @food = Food.find(params[:food_id])
+      @review = Review.new # レビュー新規作成に使用
+      @reviews = @food.reviews #レビュー一覧表示のために定義
+      @comment = Comment.new
+      @comments = @food.comments # 投稿に対する全てのコメントを取得
+      render "foods/show"
     end
   end
 

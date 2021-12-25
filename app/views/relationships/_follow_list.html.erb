@@ -14,7 +14,7 @@
     <% @users.each do |user| %>
       <tbody>
         <tr>
-          <td style="text-align: center;"><%= attachment_image_tag user, :profile, :fill, 60, 60, format: 'jpeg' %></td>
+          <td style="text-align: center;"><%= attachment_image_tag user, :profile, :fill, 60, 60, format: 'jpg', fallback: "no_image.jpg" %></td>
           <td style="padding: 25px 0; text-align: center;"><%= user.name %></td>
           <td style="padding: 25px 0; text-align: center;"><%= user.foods.count %></td>
           <td style="padding: 25px 0; text-align: center;"><%= user.followings.count %></td>

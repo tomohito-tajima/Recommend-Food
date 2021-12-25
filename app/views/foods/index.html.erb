@@ -9,9 +9,9 @@
       　   <thead>
             <tr>
               <th></th>
-              <th>お店名</th>
-              <th>ジャンル名</th>
-              <th>ユーザ名</th>
+              <th style = "text-align: center">お店名</th>
+              <th style = "text-align: center">ジャンル名</th>
+              <th style = "text-align: center">ユーザ名</th>
               <th></th>
             </tr>
           </thead>
@@ -19,11 +19,11 @@
           <% @foods.each do |food| %>
             <tbody>
               <tr>
-                <td style = "text-align: center;"><%= attachment_image_tag food, :image, :fill, 100, 100, format: 'jpeg' %></td>
-                <td style="margin: 30% 20%;"><%= food.name %></td>
-                <td><%= food.genre %></td>
-                <td><%= food.user.name %></td>
-                <td><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>
+                <td style ="text-align: center;"><%= attachment_image_tag food, :image, :fill, 70, 70, format: 'jpg', fallback: "no_image.jpg" %></td>
+                <td style="text-align: center; padding: 30px 0;"><%= food.name %></td>
+                <td style="text-align: center; padding: 30px 0;"><%= food.genre %></td>
+                <td style="text-align: center; padding: 30px 0;"><%= food.user.name %></td>
+                <td style="text-align: center; padding: 30px 0;"><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>
               </tr>
             </tbody>
           <% end %>

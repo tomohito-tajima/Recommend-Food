@@ -5,7 +5,7 @@ class HomesController < ApplicationController
     #order('count(food_id) desc')・・それを、番号の多い順に並び替える
     #limit(5)・・表示する最大数を5個に指定する
     #@all_rankspluck(:food_id)・・最後に:food_idカラムのみを数字で取り出すように指定。
-    @all_ranks = Food.find(Like.group(:food_id).order('count(food_id) desc').limit(5).pluck(:food_id))
+    @all_ranks = Food.find(Like.group(:food_id).order('count(food_id) desc').limit(6).pluck(:food_id))
   end
 
   def about

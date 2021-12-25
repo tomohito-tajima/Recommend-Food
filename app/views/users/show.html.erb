@@ -15,7 +15,7 @@
         </div>
 
         <div style = "text-align: center; margin: 0 0 20px 0;">
-          <%= attachment_image_tag @user, :profile, :fill, 250, 150, format: 'jpeg' %>
+          <%= attachment_image_tag @user, :profile, :fill, 250, 150, format: 'jpg', fallback: "no_image.jpg" %>
         </div>
 
         <table class="table" align="center">
@@ -65,6 +65,14 @@
             <h4 style="text-align: center; margin: 20px auto;">
               <%= link_to "新規投稿する", new_food_path, class: "btn btn-block btn-sm btn-success" %>
             </h4>
+          <% else %>
+            <div style="text-align: right;">
+              <% if current_user.following?(@user) %>
+                <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-block btn-sm btn-danger" %>
+              <% else %>
+                <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-block btn-sm btn-primary" %>
+              <% end %>
+            </div>
           <% end %>
         </div>
 
@@ -79,14 +87,6 @@
             <div>
               <h4 style="border-bottom: solid; border-color: #000000;"><%= @user.name %>さんが投稿した一覧</h4>
             </div>
-
-            <div>
-              <% if current_user.following?(@user) %>
-                <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-block btn-sm btn-danger" %>
-              <% else %>
-                <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-block btn-sm btn-primary" %>
-              <% end %>
-            </div>
           <% end %>
         </div>
 
@@ -95,9 +95,8 @@
               <thead>
                 <tr>
                   <th></th>
-                  <th>お店名</th>
-                  <th>レビュー</th>
-                  <th>いいね数</th>
+                  <th style="text-align: center;">お店名</th>
+                  <th style="text-align: center;">いいね数</th>
                   <th></th>
                 </tr>
               </thead>
@@ -105,11 +104,10 @@
             <% @foods.each do |food| %>
               <tbody>
                 <tr>
-                  <td style = "text-align: center;"><%= attachment_image_tag food, :image, :fill, 50, 50, format: 'jpeg' %></td>
-                  <td><%= food.name %></td>
-                  <td>レビュー</td>
-                  <td>♥<%= food.likes.count %></td>
-                  <td><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>
+                  <td style = "text-align: center;"><%= attachment_image_tag food, :image, :fill, 60, 60, format: 'jpg', fallback: "no_image.jpg" %></td>
+                  <td style="text-align: center; padding: 20px 0;"><%= food.name %></td>
+                  <td style="text-align: center; padding: 20px 0; color: red;">♥<%= food.likes.count %></td>
+                  <td style="text-align: center; padding: 20px 0;"><%= link_to "詳細", food_path(food.id), class: "btn btn-block btn-sm btn-primary" %></td>
                 </tr>
               </tbody>
             <% end %>

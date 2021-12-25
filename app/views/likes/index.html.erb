@@ -8,26 +8,24 @@
       <table class="table table-hover table-inverse">
         <thead>
           <th></th>
-          <th>お店名</th>
-          <th>ジャンル</th>
-          <th>ユーザ名</th>
-          <th>いいね数</th>
+          <th style = "text-align: center">お店名</th>
+          <th style = "text-align: center">ユーザ名</th>
+          <th style = "text-align: center">いいね数</th>
           <th></th>
         </thead>
 
         <tbody>
           <% @like_foods.each do |like_food| %>
             <tr>
-              <td></td>
-              <td><%= like_food.name %></td>
-              <td><%= like_food.genre %></td>
-              <td><%= like_food.user.name %></td>
-              <td>
+              <td><%= attachment_image_tag like_food, :image, :fill, 60, 60, format: 'jpg', fallback: "no_image.jpg" %></td>
+              <td style = "text-align: center; padding: 20px 0;"><%= like_food.name %></td>
+              <td style = "text-align: center; padding: 20px 0;"><%= like_food.user.name %></td>
+              <td style = "text-align: center; padding: 20px 0;">
                 <div id="like-btn-<%= like_food.id %>">
                   <%= render 'likes/like', food: like_food %>
                 </div>
               </td>
-              <td><%= link_to "詳細", food_path(like_food.id), class: "btn btn-block btn-sm btn-primary" %></td>
+              <td style = "text-align: center; padding: 20px 0;"><%= link_to "詳細", food_path(like_food.id), class: "btn btn-block btn-sm btn-primary" %></td>
             </tr>
           <% end %>
         </tbody>

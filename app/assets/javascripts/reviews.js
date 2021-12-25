@@ -1,5 +1,4 @@
-$(document).on('turbolinks:load', function(){
-
+$(function(){
   const stars = document.querySelector(".ratings").children;
   const ratingValue = document.getElementById("rating-value");
   const ratingValueDisplay = document.getElementById("rating-value-display");
@@ -17,13 +16,13 @@ $(document).on('turbolinks:load', function(){
         stars[j].classList.add("fa-star")
       }
     })
-    
+
     stars[i].addEventListener("click", function(){
       ratingValue.value = i + 1;
       ratingValueDisplay.textContent = ratingValue.value;
       index = i;
     })
-    
+
     stars[i].addEventListener("mouseout", function(){
       for(let j=0; j<stars.length; j++){
         stars[j].classList.remove("fa-star");

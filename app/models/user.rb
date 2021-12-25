@@ -55,7 +55,7 @@ class User < ApplicationRecord
   
   #通知レコードを作成するためメソッド
   def create_notification_follow!(current_user)
-    #既に「フォロー」されているか検索
+    #既に「フォロー」されているか検索（同じ通知レコードが存在しないときだけ、レコードを作成するようにする）
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
      # フォローされていない場合のみ、通知レコードを作成
     if temp.blank?
@@ -68,4 +68,5 @@ class User < ApplicationRecord
   end
 
   attachment :profile
+  validates :name, presence: true
 end

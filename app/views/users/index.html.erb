@@ -21,13 +21,13 @@
           <tbody>
             <% @users.each do |user| %>
               <tr>
-                <td style = "text-align: center; padding: auto 15px;"><%= attachment_image_tag user, :profile, :fill, 70, 70, format: 'jpeg' %></td>
-                <td style = "text-align: center; padding: auto 15px;"><%= user.name %></td>
-                <td style = "text-align: center; padding: auto 15px;"><%= user.foods.count %></td>
-                <td style = "text-align: center; padding: auto 15px;"><%= user.favorited_food %></td>
-                <td style = "text-align: center; padding: auto 15px;"><%= user.followings.count %></td>
-                <td style = "text-align: center; padding: auto 15px;"><%= user.followers.count %></td>
-                <td style = "text-align: center; padding: auto;"><%= link_to "詳細", user_path(user.id), class: "btn btn-block btn-sm btn-primary" %></td>
+                <td style = "text-align: center;"><%= attachment_image_tag user, :profile, :fill, 60, 60, format: 'jpg', fallback: "no_image.jpg" %></td>
+                <td style = "text-align: center; padding: 30px 0;"><%= user.name %></td>
+                <td style = "text-align: center; padding: 30px 0;"><%= user.foods.count %></td>
+                <td style = "text-align: center; padding: 30px 0;"><%= user.favorited_food %></td>
+                <td style = "text-align: center; padding: 30px 0;"><%= user.followings.count %></td>
+                <td style = "text-align: center; padding: 30px 0;"><%= user.followers.count %></td>
+                <td style = "text-align: center; padding: 20px 0;"><%= link_to "詳細", user_path(user.id), class: "btn btn-block btn-sm btn-primary" %></td>
               </tr>
             <% end %>
           </tbody>

@@ -1,4 +1,22 @@
 <main>
+  <%# if @error_review.errors.any? %>
+    <%#= @error_review.errors.count %>件のエラーが発生しました
+    <%# @error_review.errors.full_messages.each do |message| %>
+      <%#= message %>
+    <%# end %>
+  <%# end %>
+
+  <% if @error_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @error_comment.errors.count %>件のエラーが発生しました。</h2>
+      <ul>
+        <% @error_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="container">
     <div class="row" style ="text-align: center; margin: 30px auto;">
       <div class="col-lg-3">
@@ -29,7 +47,7 @@
     <div class="row">
       <div class="col-lg-5">
         <div class="d-flex justify-content-center">
-          <%= attachment_image_tag @food, :image, :fill, 350, 200, format: 'jpeg' %>
+          <%= attachment_image_tag @food, :image, :fill, 350, 200, format: 'jpg', fallback: "no_image.jpg" %>
         </div>
 
         <div class="d-flex justify-content-center">
@@ -123,11 +141,6 @@
 
                   <div class="card-content">
                     <div class="content average-score">
-                      <div class="star-rating mb-2">
-                        <div class="star-rating-front" style="width: <%= @food.review_score_percentage %>%">★★★★★</div>
-                        <div class="star-rating-back">★★★★★</div>
-                      </div>
-
                       <div class="average-score-display ml-3 pt-2">
                         <%= @food.avg_score %>点（<%= @food.reviews.count %>件のレビュー）
                       </div>
@@ -159,26 +172,43 @@
             </div>
           </div>
         </section>
+      </div>
 
-        <!--<div>-->
-          <!--<table>-->
-          <!--  <thead>-->
-          <!--    <tr>-->
-          <!--      <th>コメント投稿者</th>-->
-          <!--      <th>コメント内容</th>-->
-          <!--    </tr>-->
-          <!--  </thead>-->
-          <!--  <tbody>-->
-          <!--    <%# @comments.each do |comment| %>-->
-          <!--      <tr>-->
-          <!--        <td><%#= comment.user.name %></td>-->
-          <!--        <td><%#= comment.comment %></td>-->
-          <!--        <td><%#= link_to "削除", food_comment_path(@food, comment), method: :delete %></td>-->
-          <!--      </tr>-->
-          <!--    <%# end %>-->
-          <!--  </tbody>-->
-          <!--</table>-->
-        <!--</div>-->
+      <div class="d-flex justify-content-center">
+        <div class="line"><strong>他ユーザのコメント</strong></div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <section class="section mt-6">
+          <div class="container">
+            <div class="columns is-centered" style ="margin: 30px 25%;">
+              <div>
+                <table class="table is-fullwidth has-text-centered" style="margin: 20px 0">
+                  <thead>
+                    <tr>
+                      <th>コメント投稿者</th>
+                      <th>コメント内容</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @comments.each do |comment| %>
+                      <tr>
+                        <td><%= comment.user.name %></td>
+                        <td><%= comment.comment %></td>
+                        <td>
+                          <% if user_signed_in? && current_user.id == comment.user_id %>
+                            <%= link_to "削除", food_comment_path(@food, comment), method: :delete, class: "btn  btn-danger" %>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   </div>

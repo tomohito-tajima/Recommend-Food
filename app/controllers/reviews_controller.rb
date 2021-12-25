@@ -11,8 +11,14 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to food_path(@food)
     else
-      @food = Food.find(params[:id])
-      render 'foods/show'
+      @error_review = @review #＠error_commentにエラー内容を含んだcommentを再定義
+      #renderでfood/showを表示させるため必要の定義を記入
+      @food = Food.find(params[:food_id])
+      @review = Review.new # レビュー新規作成に使用
+      @reviews = @food.reviews #レビュー一覧表示のために定義
+      @comment = Comment.new
+      @comments = @food.comments # 投稿に対する全てのコメントを取得
+      render "foods/show"
     end
   end
 
