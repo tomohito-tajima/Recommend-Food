@@ -27,9 +27,11 @@ class FoodsController < ApplicationController
   def show
     @food = Food.find(params[:id])
     @review = Review.new # レビュー新規作成に使用
+    # @error_review = @review
     @reviews = @food.reviews #レビュー一覧表示のために定義
     # コメント機能実装のための定義
     @comment = Comment.new
+    # @error_comment = @comment
     @comments = @food.comments # 投稿に対する全てのコメントを取得
   end
 

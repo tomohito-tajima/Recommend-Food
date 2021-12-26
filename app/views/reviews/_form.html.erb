@@ -1,15 +1,15 @@
 <p class = "is=size-4 mb-3">レビューを書く</p>
 
-<% if review.errors.any? %>
-  <div class="notification is-danger">
-    <h2><%= review.errors.count %>件のエラーがあります。</h2>
-    <ul>
-      <% review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%# if review.errors.any? %>
+<!--  <div class="notification is-danger">-->
+        <!--<h2><%#= review.errors.count %>件のエラーがあります。</h2>-->
+<!--    <ul>-->
+<!--      <%# review.errors.full_messages.each do |message| %>-->
+<!--        <li><%#= message %></li>-->
+<!--      <%# end %>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--<%# end %>-->
 
 <div class = "rating-box mt-3">
   <%= form_with model: review, url: food_reviews_path(food), local: true do |f| %>

@@ -17,7 +17,9 @@ class ReviewsController < ApplicationController
       @review = Review.new # レビュー新規作成に使用
       @reviews = @food.reviews #レビュー一覧表示のために定義
       @comment = Comment.new
+      @error_comment = @comment #レビューでエラー時にビューを表示させるために記載
       @comments = @food.comments # 投稿に対する全てのコメントを取得
+      flash.now[:danger] = "レビュー投稿に失敗しました"
       render "foods/show"
     end
   end

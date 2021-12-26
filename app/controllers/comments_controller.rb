@@ -13,9 +13,11 @@ class CommentsController < ApplicationController
       #renderでfood/showを表示させるため必要の定義を記入
       @food = Food.find(params[:food_id])
       @review = Review.new # レビュー新規作成に使用
+      @error_review = @review #コメントエラー時ビューを表示させるために記載
       @reviews = @food.reviews #レビュー一覧表示のために定義
       @comment = Comment.new
       @comments = @food.comments # 投稿に対する全てのコメントを取得
+      flash.now[:danger] = "コメント投稿に失敗しました"
       render "foods/show"
     end
   end

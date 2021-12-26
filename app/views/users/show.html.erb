@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-4">
         <div class="d-flex justify-content-center">
-          <h4 style="background-color: #2C7CFF; text-align: center; padding: 10px 20px; margin: 20px 0; color: #FFFFFF;">
+          <h4 style="background-color: #2C7CFF; text-align: center; padding: 10px 20px; margin: 10px 0; color: #FFFFFF;">
             <!--カレントユーザが自身の詳細を見ている時は「マイページ」-->
             <% if user_signed_in? && current_user.id.to_s == params[:id] %>
               <strong>マイページ</strong>
@@ -14,35 +14,35 @@
           </h4>
         </div>
 
-        <div style = "text-align: center; margin: 0 0 20px 0;">
+        <div style = "text-align: center; margin: 10px 0 30px 0;">
           <%= attachment_image_tag @user, :profile, :fill, 250, 150, format: 'jpg', fallback: "no_image.jpg" %>
         </div>
 
         <table class="table" align="center">
           <tbody>
             <tr>
-              <td style = "padding: 10px 0;">名前</td>
-              <td style = "text-align: center;"><%= @user.name %></td>
+              <td style = "text-align: center; padding: 15px 0;">名前</td>
+              <td style = "text-align: center; padding: 15px 0;"><%= @user.name %></td>
             </tr>
 
             <tr>
-              <td style = "padding: 10px 0;">好きな食べ物</td>
-              <td style = "text-align: center;"><%= @user.favorited_food %></td>
+              <td style = "text-align: center; padding: 15px 0;">好きな食べ物</td>
+              <td style = "text-align: center; padding: 15px 0;"><%= @user.favorited_food %></td>
             </tr>
 
             <tr>
-              <td style = "padding: 10px 0;">自己紹介</td>
-              <td><%= @user.introduction %></td>
+              <td style = "text-align: center; padding: 15px 0;">自己紹介</td>
+              <td style = "text-align: center; padding: 15px 0;"><%= @user.introduction %></td>
             </tr>
 
             <tr>
-              <td style = "padding: 10px 0;">フォロー数： <%= @user.followings.count %></td>
-              <td>フォロワー数：<%= @user.followers.count %></td>
+              <td style = "text-align: center; padding: 15px 0;">フォロー数： <%= @user.followings.count %></td>
+              <td style = "text-align: center; padding: 15px 0;">フォロワー数：<%= @user.followers.count %></td>
             </tr>
 
             <tr>
-              <td style = "padding: 10px 0; text-align: center;"><%= link_to "フォロー一覧", user_followings_path(@user.id) %></td>
-              <td style = "text-align: center;"><%= link_to "フォロワー一覧", user_followers_path(@user.id) %></td>
+              <td style = "padding: 15px 0; text-align: center;"><%= link_to "フォロー一覧", user_followings_path(@user.id) %></td>
+              <td style = "padding: 15px 0; text-align: center;"><%= link_to "フォロワー一覧", user_followers_path(@user.id) %></td>
             </tr>
           </tbody>
         </table>

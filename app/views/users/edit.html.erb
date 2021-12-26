@@ -3,7 +3,7 @@
     <div style="text-align: center; margin: 30px 30%;">
       <h4 style="font-size:20px;background-color:#dcdcdc; padding: 10px;"><strong>ユーザ情報変更画面</strong></h4>
     </div>
-    <div style= "text-align: center;">
+    <div style= "text-align: center; color: red;">
       <% if @user.errors.any? %>
         <%= @user.errors.count %>件のエラーが発生しました
         <% @user.errors.full_messages.each do |message| %>
