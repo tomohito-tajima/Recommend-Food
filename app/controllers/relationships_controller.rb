@@ -2,10 +2,10 @@ class RelationshipsController < ApplicationController
   # フォローするとき
   def create
     current_user.follow(params[:user_id]) # followはUserモデルでフォローしたときの処理として定義
-    #フォローをしたタイミングで通知レコードを作成する
+    # フォローをしたタイミングで通知レコードを作成する
     @user = User.find(params[:user_id])
-    #通知の作成
-    @user.create_notification_follow!(current_user) #create_notification_follow!はモデルで定義
+    # 通知の作成
+    @user.create_notification_follow!(current_user) # create_notification_follow!はモデルで定義
     redirect_to request.referer
   end
 

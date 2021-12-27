@@ -56,7 +56,7 @@
 
         <div class="d-flex justify-content-center">
           <div class="relative-post-evaluation">
-            <div>他ユーザの評価：</div>
+            <div style="margin: 20px 0 0 0">他ユーザの評価：</div>
             <span id="star-rate-<%= @food.id %>"></span>
             <div id="food_avarage_rate"></div>
             <script>
@@ -73,15 +73,17 @@
             </script>
             <%= @food.evaluation %>
           </div>
-          <div class="average-score-display ml-3 pt-2">
+          <div class="average-score-display ml-3 pt-2", style="margin: 15px 0 0 0">
             <%= @food.avg_score %>点（<%= @food.reviews.count %>件のレビュー）
           </div>
         </div>
 
         <div>
-          <div>
+          <div style="margin: 15px 0 0 0">
             <%= render 'reviews/form', review: @review, food: @food %>
           </div>
+
+          <div>コメントを書く</div>
 
           <div>
             <%= form_with model: [@food, @comment], local: true do |f| %>

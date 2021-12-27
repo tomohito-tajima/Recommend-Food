@@ -9,8 +9,9 @@ class Food < ApplicationRecord
   # 通知モデルとのアソシエーション
   has_many :notifications, dependent: :destroy
 
-  validates :name, presence: true #nameのデータがないと投稿できない
-  validates :image, presence: true #imageのデータがないと投稿できない
+  validates :name, presence: true # nameのデータがないと投稿できない
+  validates :introduction, presence: true
+  validates :image, presence: true # imageのデータがないと投稿できない
 
   # レビューの平均値の定義
   def avg_score
@@ -48,12 +49,12 @@ class Food < ApplicationRecord
             end
   end
 
-  #通知メソッドの作成（ここから）
+  # 通知メソッドの作成（ここから）
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
       food_id: id,
       visited_id: user_id,
-      action: "like"
+      action: 'like'
     )
     notification.save if notification.valid?
   end
@@ -77,12 +78,10 @@ class Food < ApplicationRecord
       action: 'comment'
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
-    if notification.visitor_id == notification.visited_id
-      notification.checked = true
-    end
+    notification.checked = true if notification.visitor_id == notification.visited_id
     notification.save if notification.valid?
   end
-  #（ここまで）
+  # （ここまで）
 
   attachment :image
 end

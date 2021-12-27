@@ -10,7 +10,7 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    
+
     add_index :notifications, :visitor_id
     add_index :notifications, :visited_id
     add_index :notifications, :food_id

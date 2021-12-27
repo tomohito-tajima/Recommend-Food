@@ -20,8 +20,8 @@ class User < ApplicationRecord
   # コメントモデルとのアソシエーション
   has_many :comments, dependent: :destroy
   # 通知モデルとの紐付け
-  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy #active_notifications：自分からの通知
-  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy #passive_notifications：相手からの通知
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy # active_notifications：自分からの通知
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy # passive_notifications：相手からの通知
 
   # フォローしたときの処理
   def follow(user_id)
@@ -52,12 +52,12 @@ class User < ApplicationRecord
               User.all
             end
   end
-  
-  #通知レコードを作成するためメソッド
+
+  # 通知レコードを作成するためメソッド
   def create_notification_follow!(current_user)
-    #既に「フォロー」されているか検索（同じ通知レコードが存在しないときだけ、レコードを作成するようにする）
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
-     # フォローされていない場合のみ、通知レコードを作成
+    # 既に「フォロー」されているか検索（同じ通知レコードが存在しないときだけ、レコードを作成するようにする）
+    temp = Notification.where(['visitor_id = ? and visited_id = ? and action = ? ', current_user.id, id, 'follow'])
+    # フォローされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
         visited_id: id,
