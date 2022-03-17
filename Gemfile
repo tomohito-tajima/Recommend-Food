@@ -39,6 +39,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  
+  gem 'pry-byebug', group: :development
 end
 
 group :development do
@@ -80,7 +82,6 @@ gem 'enum_help'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'jquery-rails'
 gem 'kaminari', '~> 1.2.1'
-gem 'pry-byebug', group: :development
 gem 'ransack'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
